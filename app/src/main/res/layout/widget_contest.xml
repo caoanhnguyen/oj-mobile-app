@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_input"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/tv_widget_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kỳ thi tiếp theo 🏆"
+        android:textColor="@color/accent_primary"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_widget_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Đang tìm kiếm đấu trường..."
+        android:textColor="@color/text_primary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:ellipsize="end" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_widget_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🕒 Vui lòng chờ xíu"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <Chronometer
+            android:id="@+id/chronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/accent_primary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </LinearLayout>
+        
+</LinearLayout>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary"
+    android:padding="24dp"
+    tools:context=".activities.RegisterActivity">
+
+    <TextView
+        android:id="@+id/tvLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DevAssess"
+        android:textColor="@color/accent_primary"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvSubtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tham gia cộng đồng DevAssess"
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/etFullName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLogo" />
+
+    <EditText
+        android:id="@+id/etFullName"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_input"
+        android:hint="Họ và tên"
+        android:textColorHint="@color/text_secondary"
+        android:textColor="@color/text_primary"
+        android:paddingHorizontal="16dp"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/etEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_input"
+        android:hint="Địa chỉ Email"
+        android:textColorHint="@color/text_secondary"
+        android:textColor="@color/text_primary"
+        android:paddingHorizontal="16dp"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/etUsername"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etFullName" />
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_input"
+        android:hint="Tên đăng nhập"
+        android:textColorHint="@color/text_secondary"
+        android:textColor="@color/text_primary"
+        android:paddingHorizontal="16dp"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/tilPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:hintEnabled="false"
+        app:boxBackgroundMode="none"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/text_secondary"
+        app:layout_constraintBottom_toTopOf="@+id/tilConfirmPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUsername">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_input"
+            android:hint="Mật khẩu"
+            android:textColorHint="@color/text_secondary"
+            android:textColor="@color/text_primary"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilConfirmPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        app:hintEnabled="false"
+        app:boxBackgroundMode="none"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/text_secondary"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilPassword">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_input"
+            android:hint="Nhập lại mật khẩu"
+            android:textColorHint="@color/text_secondary"
+            android:textColor="@color/text_primary"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_button"
+        android:text="Đăng ký"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/llOAuth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilConfirmPassword" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminateTint="@color/accent_primary"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnRegister" />
+
+    <LinearLayout
+        android:id="@+id/llOAuth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/tvLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGoogle"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Google"
+            android:textAllCaps="false"
+            android:textColor="@color/text_secondary"
+            android:textStyle="bold"
+            app:icon="@drawable/ic_google"
+            app:iconTint="@null"
+            app:iconGravity="textStart"
+            app:backgroundTint="#262626"
+            app:strokeColor="#404040"
+            app:strokeWidth="1dp"
+            app:cornerRadius="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGithub"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="GitHub"
+            android:textAllCaps="false"
+            android:textColor="@color/text_secondary"
+            android:textStyle="bold"
+            app:icon="@drawable/ic_github"
+            app:iconTint="@null"
+            app:iconGravity="textStart"
+            app:backgroundTint="#262626"
+            app:strokeColor="#404040"
+            app:strokeWidth="1dp"
+            app:cornerRadius="8dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đã có tài khoản? Đăng nhập ngay!"
+        android:textColor="@color/accent_primary"
+        android:textStyle="bold"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llOAuth" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

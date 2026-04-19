@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <!-- ── Header ── -->
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hồ sơ cá nhân"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btnLogout"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_logout" />
+    </LinearLayout>
+
+    <!-- ── Tab Layout ── -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_primary"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout"
+        app:tabIndicatorColor="@color/accent_primary"
+        app:tabSelectedTextColor="@color/accent_primary"
+        app:tabTextColor="@color/text_secondary">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thông tin" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thống kê" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/mainScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ── Avatar Card (shared) ── -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="88dp"
+                    android:layout_height="88dp"
+                    app:cardCornerRadius="44dp"
+                    app:cardElevation="0dp">
+                    <ImageView
+                        android:id="@+id/ivAvatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_profile" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/tvFullName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/text_primary"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="Cao Anh Nguyen" />
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    tools:text="user@gmail.com" />
+            </LinearLayout>
+
+            <!-- ══════════════ TAB 1: THÔNG TIN ══════════════ -->
+            <LinearLayout
+                android:id="@+id/layoutInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <!-- Bio card -->
+                <LinearLayout
+                    android:id="@+id/layoutBio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_input"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Giới thiệu"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <!-- WebView renders HTML bio from Quill editor -->
+                    <WebView
+                        android:id="@+id/wvBio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!-- Thông tin cá nhân section -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Thông tin cá nhân"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_input"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Giới tính -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingVertical="10dp" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_menu_my_calendar" android:alpha="0.6" app:tint="@color/text_secondary" android:layout_marginEnd="12dp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Giới tính" android:textColor="@color/text_secondary" android:textSize="14sp" />
+                        <TextView android:id="@+id/tvGender" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/text_primary" android:textSize="14sp" tools:text="Nam" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1F1F2E" />
+
+                    <!-- Điện thoại -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingVertical="10dp" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_menu_call" android:alpha="0.6" app:tint="@color/text_secondary" android:layout_marginEnd="12dp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Điện thoại" android:textColor="@color/text_secondary" android:textSize="14sp" />
+                        <TextView android:id="@+id/tvPhone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/text_primary" android:textSize="14sp" tools:text="0399545796" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1F1F2E" />
+
+                    <!-- Trường -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingVertical="10dp" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_menu_info_details" android:alpha="0.6" app:tint="@color/text_secondary" android:layout_marginEnd="12dp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Trường" android:textColor="@color/text_secondary" android:textSize="14sp" />
+                        <TextView android:id="@+id/tvSchool" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/text_primary" android:textSize="14sp" tools:text="KMA" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1F1F2E" />
+
+                    <!-- Chuyên ngành -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingVertical="10dp" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_menu_agenda" android:alpha="0.6" app:tint="@color/text_secondary" android:layout_marginEnd="12dp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Chuyên ngành" android:textColor="@color/text_secondary" android:textSize="14sp" />
+                        <TextView android:id="@+id/tvMajor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/text_primary" android:textSize="14sp" tools:text="IT" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1F1F2E" />
+
+                    <!-- Địa chỉ -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingVertical="10dp" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_menu_mapmode" android:alpha="0.6" app:tint="@color/text_secondary" android:layout_marginEnd="12dp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Địa chỉ" android:textColor="@color/text_secondary" android:textSize="14sp" />
+                        <TextView android:id="@+id/tvLocation" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/text_primary" android:textSize="14sp" tools:text="Hà Nội, VN" />
+                    </LinearLayout>
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1F1F2E" />
+
+                    <!-- Tham gia từ -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingVertical="10dp" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_menu_recent_history" android:alpha="0.6" app:tint="@color/text_secondary" android:layout_marginEnd="12dp" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Tham gia từ" android:textColor="@color/text_secondary" android:textSize="14sp" />
+                        <TextView android:id="@+id/tvJoinedDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/text_primary" android:textSize="14sp" tools:text="14/03/2026" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Social Links section -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Liên kết"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <!-- No social links placeholder -->
+                <TextView
+                    android:id="@+id/tvNoSocialLinks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_input"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="Chưa có liên kết nào"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
+
+                <!-- GitHub chip -->
+                <LinearLayout
+                    android:id="@+id/btnGithub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_social_chip"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_github"
+                        app:tint="@color/text_secondary" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:text="GitHub"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:alpha="0.5"
+                        android:src="@android:drawable/ic_menu_share"
+                        app:tint="@color/text_secondary" />
+                </LinearLayout>
+
+                <!-- LinkedIn chip -->
+                <LinearLayout
+                    android:id="@+id/btnLinkedIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_social_chip"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_linkedin"
+                        app:tint="@color/text_secondary" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:text="LinkedIn"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:alpha="0.5"
+                        android:src="@android:drawable/ic_menu_share"
+                        app:tint="@color/text_secondary" />
+                </LinearLayout>
+
+                <!-- Website chip -->
+                <LinearLayout
+                    android:id="@+id/btnWebsite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_social_chip"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_globe"
+                        app:tint="@color/text_secondary" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:text="Website"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:alpha="0.5"
+                        android:src="@android:drawable/ic_menu_share"
+                        app:tint="@color/text_secondary" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ══════════════ TAB 2: THỐNG KÊ ══════════════ -->
+            <LinearLayout
+                android:id="@+id/layoutStats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- Stats 2×2 grid -->
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:rowCount="2">
+
+                    <!-- Đã giải -->
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginEnd="8dp" android:layout_marginBottom="8dp" android:background="@drawable/bg_input" android:gravity="center" android:orientation="vertical" android:padding="16dp">
+                        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_menu_edit" app:tint="@color/accent_primary" android:layout_marginBottom="4dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Đã giải" android:textColor="@color/text_secondary" android:textSize="13sp" />
+                        <TextView android:id="@+id/tvSolved" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:textColor="#FFFFFF" android:textSize="28sp" android:textStyle="bold" tools:text="3" />
+                    </LinearLayout>
+
+                    <!-- Submissions -->
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginBottom="8dp" android:background="@drawable/bg_input" android:gravity="center" android:orientation="vertical" android:padding="16dp">
+                        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_menu_send" app:tint="#F57C00" android:layout_marginBottom="4dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Submissions" android:textColor="@color/text_secondary" android:textSize="13sp" />
+                        <TextView android:id="@+id/tvSubmissions" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:textColor="#FFFFFF" android:textSize="28sp" android:textStyle="bold" tools:text="29" />
+                    </LinearLayout>
+
+                    <!-- Tổng điểm -->
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:layout_marginEnd="8dp" android:background="@drawable/bg_input" android:gravity="center" android:orientation="vertical" android:padding="16dp">
+                        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/star_on" app:tint="#E91E63" android:layout_marginBottom="4dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tổng điểm" android:textColor="@color/text_secondary" android:textSize="13sp" />
+                        <TextView android:id="@+id/tvScore" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:textColor="#FFFFFF" android:textSize="28sp" android:textStyle="bold" tools:text="125" />
+                    </LinearLayout>
+
+                    <!-- AC Rate -->
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:background="@drawable/bg_input" android:gravity="center" android:orientation="vertical" android:padding="16dp">
+                        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_menu_upload" app:tint="#4CAF50" android:layout_marginBottom="4dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AC Rate" android:textColor="@color/text_secondary" android:textSize="13sp" />
+                        <TextView android:id="@+id/tvAcRate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:textColor="#FFFFFF" android:textSize="28sp" android:textStyle="bold" tools:text="68.97%" />
+                    </LinearLayout>
+                </GridLayout>
+
+                <!-- ── Heatmap section ── -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/bg_input"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Title row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Lịch sử đóng góp"
+                                android:textColor="@color/text_primary"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/tvHeatmapSubtitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Đang tải..."
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- Legend -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ít" android:textColor="@color/text_secondary" android:textSize="10sp" android:layout_marginEnd="4dp" />
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="#2A2A3A" android:layout_marginEnd="2dp" />
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="#0e4429" android:layout_marginEnd="2dp" />
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="#006d32" android:layout_marginEnd="2dp" />
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="#26a641" android:layout_marginEnd="2dp" />
+                            <View android:layout_width="10dp" android:layout_height="10dp" android:background="#39d353" android:layout_marginEnd="4dp" />
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nhiều" android:textColor="@color/text_secondary" android:textSize="10sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Heatmap container: month labels + grid, scrollable ngang, tự scroll đến cuối -->
+                    <HorizontalScrollView
+                        android:id="@+id/heatmapScroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:scrollbars="none">
+
+                        <!-- Month labels on top, grid below — built dynamically in Fragment -->
+                        <LinearLayout
+                            android:id="@+id/heatmapContainer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <!-- Month label row — populated from code -->
+                            <LinearLayout
+                                android:id="@+id/heatmapMonthRow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="16dp"
+                                android:orientation="horizontal" />
+
+                            <!-- 7-row grid -->
+                            <GridLayout
+                                android:id="@+id/heatmapGrid"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:columnCount="52"
+                                android:rowCount="7" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/accent_primary"
+            android:visibility="gone" />
+
+    </FrameLayout>
+</LinearLayout>

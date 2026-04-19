@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@color/bg_primary">
+
+    <!-- ── Header ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Xếp hạng"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_secondary"
+        app:tabIndicatorColor="@color/accent_primary"
+        app:tabSelectedTextColor="@color/accent_primary"
+        app:tabTextColor="#8a8a8a" />
+
+    <!-- Chart Section cố định -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_social_chip"
+        android:padding="12dp">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvChartHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="TOP 10 SOLVED"
+                android:textColor="#8a8a8a"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvMemberCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/accent_primary"
+                android:textSize="12sp"
+                android:paddingBottom="8dp" />
+        </LinearLayout>
+            
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:scrollbars="none">
+
+            <com.kma.oj_app_mobile.components.BarChartView
+                android:id="@+id/barChartView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#333333"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Table Header for columns -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        android:background="#1affffff">
+        
+        <TextView
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="#"
+            android:textColor="#8a8a8a"
+            android:textStyle="bold"
+            android:textSize="12sp" />
+            
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="60dp"
+            android:text="Thí sinh"
+            android:textColor="#8a8a8a"
+            android:textStyle="bold"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvHeaderValue"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="SOLVED"
+            android:textColor="#8a8a8a"
+            android:textStyle="bold"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Danh sách lướt độc lập -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRanking"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btnLoadMore"
+            android:clipToPadding="false" />
+
+        <Button
+            android:id="@+id/btnLoadMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="88dp"
+            android:text="Tải thêm"
+            android:textColor="@color/accent_primary"
+            android:backgroundTint="@color/bg_secondary"
+            android:paddingHorizontal="24dp"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>
